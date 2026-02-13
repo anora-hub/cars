@@ -12,7 +12,7 @@ const Header = () => {
                     <h1 className='text-[#595959]'>Amirobod avto savdo</h1>
                     <img
                        
-                        src="./public/rasm1.png" alt="" />
+                        src="rasm1.png" alt="" />
                  
                 </div>
                
