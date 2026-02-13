@@ -4,9 +4,19 @@ const HomePage = () => {
     return (
         <>
             <main>
+                <header className='fixed top-0 left-0 w-full bg-white z-50'>
+                    <div className=' container   max-w-[343px] px-5 py-1 mx-auto  justify-between flex   '>
+                        <h1 className='text-[#595959]'>Amirobod avto savdo</h1>
+                        <img
+
+                            src="rasm1.png" alt="" />
+
+                    </div>
+
+                </header>
 
                 <section>
-                    <div className='container  max-w-[343px] p-5 mx-auto  flex gap-6'>
+                    <div className='container  max-w-[343px] p-5 mx-auto  flex gap-6 mt-15 '>
                         <div className='border border-[1px] w-[100px] h-[101px] border-[#CCCCCC] rounded-[20px]'>
                             <img className='ml-auto mr-auto block pt-[5px]   ' src="rasm2.png" alt="" />
                             <h1 className='text-center items-center text-[#000000]/90' >Statistika</h1>
@@ -30,7 +40,7 @@ const HomePage = () => {
                     </div>
                 </section>
                 <section>
-                    <div className='container  max-w-[343px] px-5 mx-auto ' >
+                    <div className='container  max-w-[343px] px-5 mx-auto  mb-[70px]' >
                         <h1 className='font-bold text-[20px] py-2 '>Oxirgi harakatlar</h1>
                         <div className='flex gap-[10px]  border border-[1px] p-2 rounded-2xl border-[black]/40'>
                             <div>

@@ -6,8 +6,8 @@ import Footer from './Footer'
 const Loyout = () => {
   return (
     <div>
-        <Header/>
-        <main className='mt-15 mb-15'>
+        
+        <main className=''>
             <Outlet/>
         </main>
         <Footer/>
