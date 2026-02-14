@@ -14,8 +14,7 @@ const ProfilePage = () => {
                 </div>
 
 
-            </section>
-
+            </section>     
             <section>
                 <div className=' container   max-w-[343px] px-5 py-2 mx-auto mt-10'>
                     <div className='container   max-w-[343px] px-5 py-2 mx-auto '>
@@ -31,39 +30,42 @@ const ProfilePage = () => {
             </section>
             <section>
                 <div className='mb-[80px]'>
-                    <div className="max-w-[343px] mx-auto mb-8 ">
-                        <label className="block text-[16px] font-medium mb-1 " htmlFor="name">
-                            Ism
-                        </label>
-                        <input
-                            type="text"
-                            id="name"
-                            placeholder="Ismingizni kiriting..."
-                            className="w-full px-4 py-2 border border-gray-300 border-[2px] rounded-lg outline-none text-gray-500 focus:border-[black]/50 "
-                        />
+                    <div className="container   max-w-[343px] px-5 py-2 mx-auto mt-10 ">
+                        <div className='mb-8'>
+                            <label className="block text-[16px] font-medium mb-1 " htmlFor="name">
+                                Ism
+                            </label>
+                            <input
+                                type="text"
+                                id="name"
+                                placeholder="Ismingizni kiriting..."
+                                className="w-full px-4 py-2 border border-gray-300 border-[2px] rounded-lg outline-none text-gray-500 focus:border-[black]/50 "
+                            />
+                       </div>
+                        <div className='mb-8'>
+                            <label className="block text-[16px] font-medium mb-1 " htmlFor="name">
+                                Familiya
+                            </label>
+                            <input
+                                type="text"
+                                id="name"
+                                placeholder="Familyangizni kiriting..."
+                                className="w-full px-4 py-2 border border-gray-300 border-[2px] rounded-lg outline-none text-gray-500 focus:border-[black]/50 "
+                            />
+                       </div>
+                        <div className='mb-8'>
+                            <label className="block text-[16px] font-medium mb-1 " htmlFor="name">
+                                Telefon raqam
+                            </label>
+                            <input
+                                type="text"
+                                id="name"
+                                placeholder="Telefon raqamizni kiriting..."
+                                className="w-full px-4 py-2 border border-gray-300 border-[2px] rounded-lg outline-none text-gray-500 focus:border-[black]/50 "
+                            />
+                       </div>
                     </div>
-                    <div className="max-w-[343px] mx-auto mb-8 ">
-                        <label className="block text-[16px] font-medium mb-1 " htmlFor="name">
-                            Familiya
-                        </label>
-                        <input
-                            type="text"
-                            id="name"
-                            placeholder="Familyangizni kiriting..."
-                            className="w-full px-4 py-2 border border-gray-300 border-[2px] rounded-lg outline-none text-gray-500 focus:border-[black]/50 "
-                        />
-                    </div>
-                    <div className="max-w-[343px] mx-auto mb-8 ">
-                        <label className="block text-[16px] font-medium mb-1 " htmlFor="name">
-                            Telefon raqam
-                        </label>
-                        <input
-                            type="text"
-                            id="name"
-                            placeholder="Telefon raqamizni kiriting..."
-                            className="w-full px-4 py-2 border border-gray-300 border-[2px] rounded-lg outline-none text-gray-500 focus:border-[black]/50 "
-                        />
-                    </div>
+                    
                 </div>
             </section>
 

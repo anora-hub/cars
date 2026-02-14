@@ -5,19 +5,22 @@ import HomePage from './pages/HomePage'
 import CarsPage from './pages/CarsPage'
 import HistoryPage from './pages/HistoryPage'
 import ProfilePage from './pages/ProfilePage'
+import { ModalProvider } from './context/ModalContext'
 
 const App = () => {
   return (
     <div>
       <BrowserRouter>
-        <Routes>
-          <Route element={<Loyout />}>
-            <Route path='/' element={<HomePage />} />
-            <Route path='cars' element={<CarsPage/>}/>
-            <Route path='history' element={<HistoryPage/>} />
-            <Route path='profile' element={<ProfilePage/>}/>
-          </Route>
-        </Routes>
+       <ModalProvider>
+          <Routes>
+            <Route element={<Loyout />}>
+              <Route path='/' element={<HomePage />} />
+              <Route path='cars' element={<CarsPage />} />
+              <Route path='history' element={<HistoryPage />} />
+              <Route path='profile' element={<ProfilePage />} />
+            </Route>
+          </Routes>
+       </ModalProvider>
       </BrowserRouter>
 
     </div>
