@@ -26,7 +26,7 @@ const Footer = () => {
                             
                         <div className="flex-1 flex justify-center">
                             
-                            <button  onClick={openModal}  className="w-[50px] p-[5px] bg-[#4C9E7A] rounded-[8px] text-white text-[26px]">
+                            <button  onClick={openModal}  className="w-[50px] p-[5px] cursor-pointer bg-[#4C9E7A] rounded-[8px] text-white text-[26px]">
                                 +
                             </button>
                         </div>

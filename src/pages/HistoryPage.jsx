@@ -13,7 +13,6 @@ const HistoryPage = () => {
 
 
             </section>
-
             <section>
                 <div className="relative w-full container mt-[60px] max-w-[343px] px-5 py-1 mx-auto">
 
@@ -68,7 +67,7 @@ const HistoryPage = () => {
                                         </p>
                                     </div>
                                     <p className='text-[18px] font-bold'><span className='text-[#00C0E8]'>01</span> A 501 RA</p>
-                                    <button className='w-[80px] text-[white] bg-[#4C9E7A] p-1 rounded-2xl'>
+                                    <button className='w-[80px] cursor-pointer text-[white] bg-[#4C9E7A] p-1 rounded-2xl'>
                                         sotilgan
                                     </button>
                                 </div>
@@ -100,7 +99,7 @@ const HistoryPage = () => {
                                         </p>
                                     </div>
                                     <p className='text-[18px] font-bold'><span className='text-[#00C0E8]'>01</span> A 501 RA</p>
-                                    <button className='w-[80px] text-[white] bg-[#4C9E7A] p-1 rounded-2xl'>
+                                    <button className='w-[80px] cursor-pointer text-[white] bg-[#4C9E7A] p-1 rounded-2xl'>
                                         sotilgan
                                     </button>
                                 </div>
@@ -132,7 +131,7 @@ const HistoryPage = () => {
                                         </p>
                                     </div>
                                     <p className='text-[18px] font-bold'><span className='text-[#00C0E8]'>01</span> A 501 RA</p>
-                                    <button className='w-[80px] text-[white] bg-[#4C9E7A] p-1 rounded-2xl'>
+                                    <button className='w-[80px] cursor-pointer text-[white] bg-[#4C9E7A] p-1 rounded-2xl'>
                                         sotilgan
                                     </button>
                                 </div>
