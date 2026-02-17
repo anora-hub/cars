@@ -3,28 +3,34 @@ import React, { createContext, useState, useContext } from "react";
 const ModalContext = createContext();
 
 export const ModalProvider = ({ children }) => {
+
     const [isOpen, setIsOpen] = useState(false);
-
-
     const [cars, setCars] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     const openModal = () => setIsOpen(true);
     const closeModal = () => setIsOpen(false);
 
-
     const addCar = ({ name, price, number }) => {
-        const newCar = {
-            id: Date.now(),
-            name: name || "Noma’lum",
-            price: price || "0",
-            number: number || "Raqam yo‘q",
-            createdAt: new Date(),
-            sold: false,
-        };
-        setCars(prev => [...prev, newCar]);
+
+        setLoading(true);
+
+        setTimeout(() => {
+            const newCar = {
+                id: Date.now(),
+                name: name || "Noma’lum",
+                price: price || "0",
+                number: number || "Raqam yo‘q",
+                createdAt: new Date(),
+                sold: false,
+            };
+
+            setCars(prev => [...prev, newCar]);
+            setLoading(false);
+
+        }, 2000);
     };
 
-    
     const toggleSold = (id) => {
         setCars(prev =>
             prev.map(car =>
@@ -41,7 +47,9 @@ export const ModalProvider = ({ children }) => {
                 closeModal,
                 cars,
                 addCar,
-                toggleSold
+                toggleSold,
+                loading,
+                setLoading
             }}
         >
             {children}
@@ -49,6 +57,6 @@ export const ModalProvider = ({ children }) => {
     );
 };
 
-
 export const useModal = () => useContext(ModalContext);
+
 

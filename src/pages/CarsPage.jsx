@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useModal } from '../context/ModalContext'
 import { useNavigate } from 'react-router-dom'
 
@@ -7,19 +7,35 @@ const CarsPage = () => {
   const [rasm, setRasm] = useState(false)
   const { isOpen, closeModal, addCar } = useModal()
   const navigate = useNavigate();
-const [modal , setModal] = useState(false)
+  const [modal, setModal] = useState(false)
 
   const handleAdd = () => {
     addCar({ name, price, number });
     closeModal();
   };
+
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [type, setType] = useState("");
+  const { loading, setLoading } = useModal();
 
+  useEffect(() => {
+    setLoading(true);
+
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
+      {loading && (
+        <div className="fixed inset-0 bg-white flex justify-center items-center z-[999]">
+          <div className="w-12 h-12 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
+        </div>
+      )}
       <main>
         <section>
           <div className='fixed top-0 left-0 w-full bg-white z-50'>
@@ -82,17 +98,17 @@ const [modal , setModal] = useState(false)
             {modal && (
               <div
                 className="fixed inset-0 bg-black/40 flex justify-center items-center z-51"
-                onClick={() => setModal(false)} 
+                onClick={() => setModal(false)}
               >
                 <div
                   className="bg-white p-4 rounded-lg w-[300px]"
-                  onClick={(e) => e.stopPropagation()} 
+                  onClick={(e) => e.stopPropagation()}
                 >
-                 <div className='flex items-center gap-3'>
-                  <div>
-                    <img src="/rasm26.png" alt="" />
-                  </div>
-                  <div>
+                  <div className='flex items-center gap-3'>
+                    <div>
+                      <img src="/rasm26.png" alt="" />
+                    </div>
+                    <div>
                       <div className='flex flex-col gap-[5px]' >
                         <div className='flex items-center gap-[90px]'>
                           <h1 className='font-[16px] font-medium'>Matiz</h1>
@@ -103,16 +119,16 @@ const [modal , setModal] = useState(false)
                           sotilgan
                         </button>
                       </div>
+                    </div>
                   </div>
-                 </div>
-                 <div>
-                  <img className='py-3' src="/rasm27.png" alt="" />
-                 </div>
-                 <div>
-                  <div className='flex items-center justify-between py-1'>
+                  <div>
+                    <img className='py-3' src="/rasm27.png" alt="" />
+                  </div>
+                  <div>
+                    <div className='flex items-center justify-between py-1'>
                       <p className='text-[#8E8E93] font-bold text-[14px]'>model:</p>
                       <p className='font-bold text-[14px] '>Matiz</p>
-                  </div>
+                    </div>
                     <div className='flex items-center justify-between py-[1px]'>
                       <p className='text-[#8E8E93] font-bold text-[14px]'>Davlat raqami:</p>
                       <p className='font-bold text-[14px] '>A 501 RA</p>
@@ -149,7 +165,7 @@ const [modal , setModal] = useState(false)
                       <p className='text-[#8E8E93] text-[14px] font-bold'>Sotilgan sana:</p>
                       <p className='font-bold  text-[14px]'>08.02.2026</p>
                     </div>
-                 </div>
+                  </div>
                 </div>
               </div>
             )}
@@ -278,28 +294,28 @@ const [modal , setModal] = useState(false)
                       />
                       <h1 className="absolute right-2 text-[#8E8E93] text-[] top-1/2 -translate-y-1/2   px-[2px] cursor-pointer">
                         UZS
-                     </h1>
+                      </h1>
                     </div>
-                  
 
-                  <select value={type} onChange={(e) => setType(e.target.value)} className='w-full px-[9px] py-[4px] my-2 border border-[blue]/20 border-[2px] rounded-lg outline-none text-[#8E8E93]   focus:border-[black]/50'>
-                    <option value="avtomobil">Avtomobil</option>
-                    <option value="foyda">Foyda</option>
-                    <option value="xarajat">Xarajat</option>
-                  </select>
+
+                    <select value={type} onChange={(e) => setType(e.target.value)} className='w-full px-[9px] py-[4px] my-2 border border-[blue]/20 border-[2px] rounded-lg outline-none text-[#8E8E93]   focus:border-[black]/50'>
+                      <option value="avtomobil">Avtomobil</option>
+                      <option value="foyda">Foyda</option>
+                      <option value="xarajat">Xarajat</option>
+                    </select>
                     <div className='border border-[1px] border-[#8E8E93] rounded-[10px]'>
-                      <img onClick={closeModal} className='ml-auto mr-auto block my-3'  src="/rasm25.png" alt="" />
+                      <img onClick={closeModal} className='ml-auto mr-auto block my-3' src="/rasm25.png" alt="" />
                       <button className='w-[230px]  bg-[#E3E3E3] p-1 rounded-[10px] text-[#8E8E93] my-4  ml-auto mr-auto block'>
                         Rasm joylash (ixtiyoriy)
                       </button>
                     </div>
                     <button
                       onClick={() => {
-                        addCar({ name, price, type });  
+                        addCar({ name, price, type });
                         closeModal();
                         navigate("/history");
 
-                        
+
                         setName("");
                         setPrice("");
                         setType("");
