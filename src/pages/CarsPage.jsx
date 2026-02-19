@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useModal } from '../context/ModalContext'
 import { useNavigate } from 'react-router-dom'
+import useGet from '../Hook/useGet'
 
 const CarsPage = () => {
 
@@ -13,11 +14,12 @@ const CarsPage = () => {
     addCar({ name, price, number });
     closeModal();
   };
-
+  
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [type, setType] = useState("");
   const { loading, setLoading } = useModal();
+
 
   useEffect(() => {
     setLoading(true);
@@ -28,6 +30,12 @@ const CarsPage = () => {
 
     return () => clearTimeout(timer);
   }, []);
+
+  const { data: cars} = useGet();
+
+  useEffect(() => {
+    console.log("Mashinalar ma'lumotlari:", cars);
+  }, [cars]);
 
   return (
     <>

@@ -1,21 +1,55 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useModal } from '../context/ModalContext';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const ProfilePage = () => {
     const { loading, setLoading } = useModal();
-        
+
+    
+    const [company, setCompany] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [phone, setPhone] = useState("");
+
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
 
-            // Simulate async check / API call
-            await new Promise((resolve) => setTimeout(resolve, 500)); // replace with real check
+    
+            await new Promise((resolve) => setTimeout(resolve, 500));
 
             setLoading(false);
         };
 
         fetchData();
     }, []);
+
+    
+    const handleSave = async () => {
+        try {
+            setLoading(true);
+
+            const res = await axios.post('http://192.168.0.193:5000/api/auth/register', {
+                company_name: company,
+                first_name: firstName,
+                last_name: lastName,
+                phone_number: phone
+            });
+
+            if (res.status === 200 || res.data.success) {
+                toast.success("Profil ma’lumotlaringiz saqlandi!");
+                navigate("/home"); 
+            } else {
+                toast.error("Xatolik yuz berdi!");
+            }
+        } catch (err) {
+            console.error(err);
+            toast.error(err.response?.data?.message || "Server bilan bog‘lanib bo‘lmadi!");
+        } finally {
+            setLoading(false);
+        }
+    };
     return (
         <>
             {loading && (
@@ -29,12 +63,12 @@ const ProfilePage = () => {
                         <img src="./public/rasm14.png" alt="" />
                         <h1 className='text-[20px] text-[#595959] font-medium  '>Profil</h1>
                     </div>
-                    
-                   
+
+
                 </div>
 
 
-            </section>     
+            </section>
             <section>
                 <div className=' container   max-w-[343px] px-5 py-2 mx-auto mt-10'>
                     <div className='container   max-w-[343px] px-5 py-2 mx-auto '>
@@ -46,49 +80,73 @@ const ProfilePage = () => {
                             Rasmni o’zgartirish
                         </button>
                     </div>
-               </div>
+                </div>
             </section>
             <section>
                 <div className='mb-[80px]'>
                     <div className="container   max-w-[343px] px-5 py-2 mx-auto mt-10 ">
                         <div className='mb-8'>
                             <label className="block text-[16px] font-medium mb-1 " htmlFor="name">
+                                Kampaniya
+                            </label>
+                            <input
+                                type="text"
+                                id="company"
+                                placeholder="Kampaniya nomi"
+                                value={company}
+                                onChange={(e) => setCompany(e.target.value)}
+                                className="w-full px-4 py-2 border border-gray-300 border-[2px] rounded-lg outline-none text-gray-500 focus:border-[black]/50 "
+                            />
+                        </div>
+                        <div className='mb-8'>
+                            <label className="block text-[16px] font-medium mb-1 " htmlFor="name">
                                 Ism
                             </label>
                             <input
                                 type="text"
-                                id="name"
+                                id="firstName"
                                 placeholder="Ismingizni kiriting..."
+                                value={firstName}
+                                onChange={(e) => setFirstName(e.target.value)}
                                 className="w-full px-4 py-2 border border-gray-300 border-[2px] rounded-lg outline-none text-gray-500 focus:border-[black]/50 "
                             />
-                       </div>
+                        </div>
                         <div className='mb-8'>
                             <label className="block text-[16px] font-medium mb-1 " htmlFor="name">
                                 Familiya
                             </label>
                             <input
                                 type="text"
-                                id="name"
-                                placeholder="Familyangizni kiriting..."
+                                id="lastName"
+                                placeholder="Familiyangizni kiriting..."
+                                value={lastName}
+                                onChange={(e) => setLastName(e.target.value)}
                                 className="w-full px-4 py-2 border border-gray-300 border-[2px] rounded-lg outline-none text-gray-500 focus:border-[black]/50 "
                             />
-                       </div>
+                        </div>
                         <div className='mb-8'>
                             <label className="block text-[16px] font-medium mb-1 " htmlFor="name">
                                 Telefon raqam
                             </label>
                             <input
                                 type="text"
-                                id="name"
-                                placeholder="Telefon raqamizni kiriting..."
+                                id="phone"
+                                placeholder="Telefon raqamingizni kiriting..."
+                                value={phone}
+                                onChange={(e) => setPhone(e.target.value)}
                                 className="w-full px-4 py-2 border border-gray-300 border-[2px] rounded-lg outline-none text-gray-500 focus:border-[black]/50 "
                             />
-                       </div>
+                        </div>
+                        <button
+                            onClick={handleSave}
+                            className="w-full bg-blue-500 text-white py-2 rounded-md font-bold hover:bg-blue-600 transition"
+                        >
+                            Saqlash
+                        </button>
                     </div>
                     
                 </div>
             </section>
-
         </>
     )
 }

@@ -11,10 +11,10 @@ const Footer = () => {
 
         <>
             <footer>
-                <div className="fixed bottom-0 left-0 w-full bg-white z-50">
+                <div className="fixed bottom-0 left-0 w-full bg-white ">
                     <div className="container max-w-[343px] px-5 py-2 mx-auto flex justify-between  items-center">
 
-                        <NavLink to="/" className="flex-1 flex flex-col items-center">
+                        <NavLink to="/home" className="flex-1 flex flex-col items-center">
                             <img src="/rasm13.png" alt="" />
                             <h6 className="text-[#8E8E93] text-[10px]">Asosiy</h6>
                         </NavLink>
